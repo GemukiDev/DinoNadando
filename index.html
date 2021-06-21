@@ -234,7 +234,6 @@ var impulso = 900;
 var impulsoEnAgua = 500;
 var gravedad = 2500;
 var densidad = 0.00035;
-var velMaxAgua = 500;
 
 var dinoPosX = 42;
 var dinoPosY = nivelDelMar; 
@@ -306,7 +305,6 @@ function Update() {
     }else{
         velY += (VolumenSumergido() * densidad * gravedad - Math.sign(velY) * velY * velY *0.01 - gravedad) * deltaTime;
     }
-    //console.log(VolumenSumergido());
 }
 
 function VolumenSumergido() {
@@ -346,8 +344,6 @@ function MoverDinosaurio() {
 }
 
 function TocarSuelo() {
-    //dinoPosY = nivelDelMar;
-    //velY = 0;
     if(saltando){
         dino.classList.add("dino-corriendo");
     }
