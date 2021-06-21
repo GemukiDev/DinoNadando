@@ -234,6 +234,7 @@ var impulso = 900;
 var impulsoEnAgua = 500;
 var gravedad = 2500;
 var densidad = 0.00035;
+var coeficienteRozamiento = 0.01;
 
 var dinoPosX = 42;
 var dinoPosY = nivelDelMar; 
@@ -303,7 +304,9 @@ function Update() {
 
         velY -= gravedad * deltaTime;
     }else{
-        velY += (VolumenSumergido() * densidad * gravedad - Math.sign(velY) * velY * velY *0.01 - gravedad) * deltaTime;
+        var empuje = VolumenSumergido() * densidad * gravedad;
+        var rozamiento = Math.sign(velY) * velY * velY * coeficienteRozamiento;
+        velY += (empuje - rozamiento - gravedad) * deltaTime;
     }
 }
 
